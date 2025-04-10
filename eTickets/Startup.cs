@@ -1,5 +1,6 @@
 ﻿using eTickets.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 
 public class Startup
 {
@@ -37,7 +38,11 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers();                                                                             // or MapRazorPages(), MapDefaultControllerRoute(), etc.
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");                                                                             // or MapRazorPages(), MapDefaultControllerRoute(), etc.
         });
+        //Seed database
+        AddDbInitializer.Seed(app);
     }
 }
