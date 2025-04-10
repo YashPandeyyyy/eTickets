@@ -15,7 +15,7 @@ public class Startup
     {
         // DbContext Confuguration
         services.AddDbContext<AddDbContext>(options => options.UseSqlServer
-            (Configuration.GetConnectionString("DefaultConnectionString")));
+            (Configuration.GetConnectionString("DefaulConnectionStrings")));
 
         services.AddControllers();                                                                                   // or AddRazorPages(), AddEndpointsApiExplorer(), etc.
                                                                                                                      // Add other services here
