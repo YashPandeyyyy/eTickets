@@ -1,4 +1,5 @@
 ﻿using eTickets.Data;
+using Microsoft.EntityFrameworkCore;
 
 public class Startup
 {
@@ -13,7 +14,9 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // DbContext Confuguration
-        services.AddDbContext<AddDbContext>();
+        services.AddDbContext<AddDbContext>(options => options.UseSqlServer
+            (Configuration.GetConnectionString("DefaultConnectionString")));
+
         services.AddControllers();                                                                                   // or AddRazorPages(), AddEndpointsApiExplorer(), etc.
                                                                                                                      // Add other services here
     }
